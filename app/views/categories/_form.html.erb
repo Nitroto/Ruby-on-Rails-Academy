@@ -1,0 +1,53 @@
+<%= form_with(model: category, local: true) do |f| %>
+    <% if category.errors.any? %>
+        <div class="notification is-danger">
+          <!--<button class="delete"></button>-->
+          <h2><%= pluralize(category.errors.count, 'error') %></h2>
+
+          <ul>
+            <% category.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name, 'Category name:', class: 'label' %>
+      <div class="control">
+        <%= f.text_field :name, class: 'input' %>
+      </div>
+    </div>
+
+    <% if category.courses.any? %>
+        <div class="field">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                Courses:
+              </p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                <% if category.courses.each do |c| %>
+                    <p><%= link_to c.name, c %></p>
+                <% end.empty? %>
+                    <p>There is no courses.</p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+
+    <div class="field is-grouped">
+      <% if category.id != 0 %>
+          <div class="control">
+            <%= f.submit category.id? ? 'Update' : 'Create', class: 'button is-primary' %>
+          </div>
+      <% end %>
+      <div class="control">
+        <%= link_to 'Cancel', category.id? ? @category : categories_path, class: 'button is-danger' %>
+      </div>
+    </div>
+<% end %>

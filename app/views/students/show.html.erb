@@ -1,0 +1,37 @@
+<%= link_to raw('<span class="icon">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      </span>'), students_path, class: 'button is-danger is-outlined' %>
+<div class="section">
+  <div class=" card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+          </figure>
+        </div>
+
+        <div class="media-content">
+          <p class="title"><%= "#{@student.first_name} #{@student.last_name}" %></p>
+        </div>
+
+        <div class="media-right">
+          <%= link_to fa_icon('pencil', class: 'fa-2x'), edit_student_path %>
+          <br/>
+          <%= link_to fa_icon('trash', class: 'fa-2x'), @student, :method => :delete %>
+        </div>
+      </div>
+      <div class="content">
+        <% if @student.courses.each do |c| %>
+            <%= link_to c.name, c %>
+        <% end.empty? %>
+            The student does not participate in any courses
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Sign Up For Course', "/students/#{@student.id}/attend", class: 'button is-primary is-outlined' %>
+
+

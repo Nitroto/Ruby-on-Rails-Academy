@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= render 'partials/head' %>
+</head>
+
+<body>
+<%= render 'partials/navigation' %>
+
+
+
+<section class="section">
+  <div class="container">
+    <% flash.each do |name, msg| %>
+        <%= content_tag(:div, msg, class: 'notification is-info') %>
+    <% end %>
+
+    <%= yield %>
+  </div>
+</section>
+
+<%= render 'partials/footer' %>
+
+
+</body>
+</html>

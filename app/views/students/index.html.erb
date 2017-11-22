@@ -1,0 +1,35 @@
+<div class="section">
+  <%= link_to 'Add student', new_student_path, class: 'button is-primary' %>
+</div>
+<div class="columns">
+  <% if @students.each do |s| %>
+    <div class="column is-6">
+      <div class=" card">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title"><%= link_to "#{s.first_name} #{s.last_name}", s %></p>
+            </div>
+          </div>
+          <div class="content">
+            <% if s.courses.each do |c| %>
+              <%= link_to c.name, c %>
+            <% end.empty? %>
+              The student does not participate in any courses
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end.empty? %>
+    <div class="section">
+      <h1>There are no students.</h1>
+    </div>
+  <% end %>
+
+</div>

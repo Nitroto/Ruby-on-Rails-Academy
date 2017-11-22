@@ -1,0 +1,29 @@
+<h2 class="title is-2"> <%= link_to raw('<span class="icon">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      </span>'), @student, class: 'button is-danger is-outlined' %>  Sing Up For Course</h2>
+
+
+<%= params[:category] %>
+
+<%= form_for :course do |f| %>
+
+    <div class="field">
+      <%= f.label :category, 'Choose category:', class: 'label' %>
+      <div class="control select">
+        <%= f.collection_select :category, @categories, :id, :name, prompt: 'Please select category' %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :id, 'Choose course:', class: 'label' %>
+      <div class="control select">
+        <%= f.collection_select :id, Course.order(:name), :id, :name, prompt: 'Please select course' %>
+      </div>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <%= link_to 'Sign Up', @student, class: 'button is-primary is-outlined' %>
+      </div>
+    </div>
+<% end %>

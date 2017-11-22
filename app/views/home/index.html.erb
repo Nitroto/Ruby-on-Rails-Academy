@@ -1,0 +1,28 @@
+<div class="tile is-ancestor">
+  <%= link_to (categories_path) do %>
+      <div class="is-4 tile is-parent">
+        <article class="tile is-child notification is-primary">
+          <p class="title">
+            Categories
+          </p>
+        </article>
+      </div>
+  <% end %>
+
+  <%= link_to (courses_path) do %>
+      <div class="is-4 tile is-parent">
+        <article class="tile is-child notification is-warning">
+          <p class="title">Courses</p>
+
+        </article>
+      </div>
+  <% end %>
+
+  <%= link_to (students_path) do %>
+      <div class="is-4 tile is-parent">
+        <article class="tile is-child notification is-info">
+          <p class="title">Students</p>
+        </article>
+      </div>
+  <% end %>
+</div>

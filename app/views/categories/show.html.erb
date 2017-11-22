@@ -1,0 +1,24 @@
+<div class="card">
+  <header class="card-header">
+    <%= link_to raw('<span class="icon">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      </span>'), categories_path, class: 'card-header-icon' %>
+
+    <p class="card-header-title">
+      <%= @category.name %>
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <% if @category.courses.each do |c| %>
+        <p><%= link_to c.name, c %></p>
+      <% end.empty? %>
+        <p>There is no courses in <%= @category.name %></p>
+      <% end %>
+    </div>
+  </div>
+  <footer class="card-footer">
+    <%= link_to 'Edit', edit_category_path, class: 'card-footer-item' %>
+    <%= link_to 'Delete', @category, :method => :delete, class: 'card-footer-item' %>
+  </footer>
+</div>

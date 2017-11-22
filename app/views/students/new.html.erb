@@ -1,0 +1,26 @@
+<h2 class="title is-2">Add student</h2>
+
+<%= form_for @student, url: {action: 'create'} do |f| %>
+  <div class="field">
+    <%= f.label :first_name, 'First name:', class: 'label' %>
+    <div class="control">
+      <%= f.text_field :first_name, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name, 'Last name:', class: 'label' %>
+    <div class="control">
+      <%= f.text_field :last_name, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <%= f.submit 'Add', class: 'button is-primary' %>
+    </div>
+    <div class="control">
+      <%= link_to 'Cancel', students_path, class: 'button is-danger' %>
+    </div>
+  </div>
+<% end %>

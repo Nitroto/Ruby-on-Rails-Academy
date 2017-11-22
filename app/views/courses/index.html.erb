@@ -1,0 +1,44 @@
+<div class="section">
+  <%= link_to 'Add course', new_course_path, class: 'button is-primary' %>
+</div>
+<% if @courses.any? %>
+  <table class="table is-hoverable is-fullwidth">
+    <thead>
+    <tr>
+      <th>Course name</th>
+      <th>Category</th>
+      <th>Level</th>
+      <th><abbr title='Number of maximum students'>Max</abbr></th>
+      <th><abbr title='Number of students enrolled'>Students</abbr></th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @courses.each do |c| %>
+      <tr>
+        <td><%= link_to c.name, c %></td>
+        <td><%= link_to c.category.name, c.category %></td>
+        <td><%= c.level %></td>
+        <td><%= c.number_of_maximum_students %></td>
+        <td><%= c.students.length %></td>
+        <td><%= link_to fa_icon('pencil', class: 'fa-1x'), "courses/#{c.id}/edit" %> | <%= link_to fa_icon('trash', class: 'fa-1x'), c, :method => :delete%></td>
+      </tr>
+    <% end %>
+    </tbody>
+    <tfoot>
+    <tr>
+      <th>Course name</th>
+      <th>Category</th>
+      <th>Level</th>
+      <th><abbr title='Number of maximum students'>Max</abbr></th>
+      <th><abbr title='Number of students enrolled'>Students</abbr></th>
+      <th>Actions</th>
+    </tr>
+    </tfoot>
+
+  </table>
+<% else %>
+  <div class="section">
+    <h1>There are no courses for now.</h1>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+<%= link_to 'Add category', new_category_path, class: 'button is-primary' %>
+
+<div class="section title is-3">
+  <% if @categories.each do |c| %>
+    <div class="container is-fluid">
+      <%= link_to c.name, c %>
+    </div>
+
+  <% end.empty? %>
+    <h2>There are no categories for now.</h2>
+  <% end %>
+</div>
+
+
+

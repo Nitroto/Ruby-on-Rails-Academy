@@ -1,0 +1,30 @@
+<div class="card">
+  <header class="card-header">
+    <%= link_to raw('<span class="icon">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      </span>'), courses_path, class: 'card-header-icon' %>
+
+    <p class="card-header-title">
+      <%= @course.name %>
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <strong>Category: </strong>
+      <%= @course.category.name %>
+      <br/>
+      <strong>Level: </strong>
+      <%= @course.level %>
+      <br/>
+      <strong>Number of maximum students: </strong>
+      <%= @course.number_of_maximum_students %>
+      <br/>
+      <strong>Number of students enrolled: </strong>
+      <%= @course.students.length %>
+    </div>
+  </div>
+  <footer class="card-footer">
+    <%= link_to 'Edit', edit_course_path, class: 'card-footer-item' %>
+    <%= link_to 'Delete', @course, :method => :delete, class: 'card-footer-item' %>
+  </footer>
+</div>

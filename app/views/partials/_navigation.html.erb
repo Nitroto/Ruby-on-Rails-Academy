@@ -1,0 +1,36 @@
+<nav class='navbar is-transparent'>
+  <div class='navbar-brand'>
+    <%= link_to fa_stacked_icon('home', base: 'square-o', class: 'fa-2x'), root_path, class: 'navbar-item' %>
+
+    <div id='nav-toggle' class='navbar-burger burger' data-target='navigation-menu'>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id='navigation-menu' class='navbar-menu'>
+    <div class='navbar-start'>
+      <%= link_to 'Categories', categories_path, class: 'navbar-item' %>
+      <%= link_to 'Courses', courses_path, class: 'navbar-item' %>
+      <%= link_to 'Students', students_path, class: 'navbar-item' %>
+    </div>
+  </div>
+</nav>
+
+<script type='text/javascript'>
+    document.getElementById('nav-toggle').addEventListener('click', toggleNav);
+
+    function toggleNav() {
+        var nav = document.getElementById('navigation-menu');
+        var toggler = document.getElementById('nav-toggle');
+        var className = nav.getAttribute('class');
+        if (className === 'navbar-menu') {
+            nav.className = 'navbar-menu is-active';
+            toggler.className = 'navbar-burger burger is-active';
+        } else {
+            nav.className = 'navbar-menu';
+            toggler.className = 'navbar-burger burger';
+        }
+    }
+</script>
